@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { BedDouble, Snowflake, Droplets, MapPin, PhoneCall } from "lucide-react";
+import { BedDouble, Droplets, MapPin, PhoneCall, MessageCircle, UserCheck } from "lucide-react";
 import Hero from "@/components/Hero";
 import BookingInquiryPanel from "@/components/BookingInquiryPanel";
 import PropertyImage from "@/components/PropertyImage";
@@ -31,11 +31,44 @@ const trustStats = [
 ];
 
 const whyStay = [
-  { title: "Comfortable Double-Bed Rooms", icon: BedDouble },
-  { title: "AC & Non-AC Options", icon: Snowflake },
-  { title: "Attached Bathrooms & Hot Water", icon: Droplets },
-  { title: "Convenient Rishikesh Location", icon: MapPin },
-  { title: "Direct Booking, No Middlemen", icon: PhoneCall },
+  {
+    title: "Comfortable Rooms",
+    description: "Double-bed rooms, AC or Non-AC, kept clean and simple.",
+    icon: BedDouble,
+  },
+  {
+    title: "Attached Bathroom & Hot Water",
+    description: "Every room, AC and Non-AC alike, has its own bathroom and hot water.",
+    icon: Droplets,
+  },
+  {
+    title: "Convenient Location",
+    description: "Chandreshwar Nagar, near Durga Mandir and Dayanand Ashram Road.",
+    icon: MapPin,
+  },
+  {
+    title: "Direct, Personal Booking",
+    description: "Call or WhatsApp the hotel directly — no platform in between.",
+    icon: PhoneCall,
+  },
+];
+
+const directBookingPoints = [
+  {
+    title: "No Commission, No Middlemen",
+    description: "Book straight with the hotel — nothing added for a third-party platform.",
+    icon: PhoneCall,
+  },
+  {
+    title: "Personally Confirmed",
+    description: `${hotel.owner} and the team confirm every enquiry themselves.`,
+    icon: UserCheck,
+  },
+  {
+    title: "Talk to a Real Person",
+    description: "Call or WhatsApp — a straightforward conversation, not a chatbot.",
+    icon: MessageCircle,
+  },
 ];
 
 export default function HomePage() {
@@ -144,26 +177,49 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why stay here */}
-      <section id="why-stay" className="container-editorial py-24 md:py-32">
-        <Reveal className="max-w-2xl mb-14">
-          <p className="text-xs tracking-[0.25em] text-terracotta mb-4">WHY STAY HERE</p>
+      {/* Why stay here — centered intro + icon columns */}
+      <section id="why-stay" className="container-editorial py-24 md:py-32 text-center">
+        <Reveal className="max-w-2xl mx-auto mb-16">
+          <p className="text-xs tracking-[0.25em] text-terracotta mb-4">WELCOME TO HOTEL CHANDRESHWAR</p>
           <h2 className="font-display text-4xl md:text-5xl text-charcoal text-balance">
-            Simple Comfort. Convenient Location. Personal Hospitality.
+            Simple Comfort. Personal Hospitality.
           </h2>
+          <p className="mt-5 text-charcoal/70 leading-relaxed">
+            No unnecessary extras — just what makes a Rishikesh stay comfortable,
+            handled directly by the people who run the hotel.
+          </p>
         </Reveal>
-        <RevealStagger className="grid sm:grid-cols-2 lg:grid-cols-5 gap-px bg-charcoal/10 border border-charcoal/10">
+        <RevealStagger className="grid sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-charcoal/10">
           {whyStay.map((item) => (
-            <RevealStaggerItem
-              key={item.title}
-              hover
-              className="relative bg-ivory p-8 flex flex-col gap-4 hover:shadow-lg hover:z-10 transition-shadow duration-300"
-            >
-              <item.icon className="size-6 text-terracotta" aria-hidden />
-              <p className="text-sm text-charcoal leading-snug">{item.title}</p>
+            <RevealStaggerItem key={item.title} className="flex flex-col items-center gap-3 px-6 py-8">
+              <item.icon className="size-7 text-terracotta" aria-hidden />
+              <h3 className="font-display text-lg text-charcoal">{item.title}</h3>
+              <p className="text-sm text-charcoal/60 leading-relaxed max-w-[220px]">{item.description}</p>
             </RevealStaggerItem>
           ))}
         </RevealStagger>
+      </section>
+
+      {/* Direct booking band */}
+      <section className="relative bg-charcoal text-ivory py-20 md:py-24 overflow-hidden">
+        <Reveal className="container-editorial grid md:grid-cols-[1fr_auto] gap-12 items-center">
+          <div>
+            <p className="text-xs tracking-[0.25em] text-terracotta mb-4">DIRECT BOOKING</p>
+            <h2 className="font-display text-3xl md:text-4xl text-balance">
+              Book Directly With the Hotel
+            </h2>
+            <div className="mt-8 grid sm:grid-cols-3 gap-8">
+              {directBookingPoints.map((point) => (
+                <div key={point.title} className="flex flex-col gap-2">
+                  <point.icon className="size-5 text-terracotta" aria-hidden />
+                  <h3 className="text-sm font-medium text-ivory">{point.title}</h3>
+                  <p className="text-xs text-ivory/60 leading-relaxed">{point.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <BookStayButton size="lg" className="shrink-0" />
+        </Reveal>
       </section>
 
       {/* Rishikesh editorial section */}
