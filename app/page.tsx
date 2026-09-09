@@ -5,7 +5,7 @@ import Hero from "@/components/Hero";
 import BookingInquiryPanel from "@/components/BookingInquiryPanel";
 import PropertyImage from "@/components/PropertyImage";
 import Reveal, { RevealStagger, RevealStaggerItem } from "@/components/Reveal";
-import RoomCard from "@/components/RoomCard";
+import RoomTeaserCard from "@/components/RoomTeaserCard";
 import FaqAccordion from "@/components/FaqAccordion";
 import CountUp from "@/components/CountUp";
 import ImageMarquee from "@/components/ImageMarquee";
@@ -117,22 +117,30 @@ export default function HomePage() {
         />
       </section>
 
-      {/* Rooms */}
+      {/* Rooms — quick pick */}
       <section className="bg-[#efe9dd] py-24 md:py-32">
         <div className="container-editorial">
-          <Reveal className="max-w-2xl mb-16 md:mb-20">
-            <p className="text-xs tracking-[0.25em] text-terracotta mb-4">ROOMS</p>
-            <h2 className="font-display text-4xl md:text-5xl text-charcoal text-balance">
-              Simple, Comfortable Rooms — AC or Non-AC
-            </h2>
+          <Reveal className="mb-12 md:mb-16 flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-xl">
+              <p className="text-xs tracking-[0.25em] text-terracotta mb-4">ROOMS</p>
+              <h2 className="font-display text-4xl md:text-5xl text-charcoal text-balance">
+                Find Your Room
+              </h2>
+            </div>
+            <Link
+              href="/rooms"
+              className="text-sm tracking-wide text-charcoal border-b border-charcoal/40 pb-1 hover:border-terracotta hover:text-terracotta transition-colors"
+            >
+              View All Rooms
+            </Link>
           </Reveal>
-          <div className="space-y-20 md:space-y-28">
-            {rooms.map((room, i) => (
-              <Reveal key={room.slug} delay={0.1}>
-                <RoomCard room={room} reverse={i % 2 === 1} />
-              </Reveal>
+          <RevealStagger className="grid sm:grid-cols-2 gap-6 md:gap-8">
+            {rooms.map((room) => (
+              <RevealStaggerItem key={room.slug}>
+                <RoomTeaserCard room={room} />
+              </RevealStaggerItem>
             ))}
-          </div>
+          </RevealStagger>
         </div>
       </section>
 

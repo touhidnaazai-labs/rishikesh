@@ -36,7 +36,7 @@ export default function Header() {
   return (
     <header
       className={clsx(
-        "fixed inset-x-0 top-0 z-40 transition-colors duration-300",
+        "fixed inset-x-0 top-0 sm:top-9 z-40 transition-colors duration-300",
         solid ? "bg-ivory/95 backdrop-blur shadow-[0_2px_16px_rgba(25,24,23,0.06)]" : "bg-transparent"
       )}
     >

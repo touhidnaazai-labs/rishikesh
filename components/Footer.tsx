@@ -3,12 +3,19 @@ import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { hotel } from "@/data/hotel";
 import { footerNav } from "@/data/site";
 import { buildWhatsAppLink } from "@/lib/booking";
+import NewsletterSignup from "./NewsletterSignup";
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="bg-charcoal text-ivory">
+      <div className="border-b border-ivory/10">
+        <div className="container-editorial py-8">
+          <NewsletterSignup />
+        </div>
+      </div>
+
       <div className="container-editorial grid gap-12 py-16 md:py-20 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
           <div className="font-display text-2xl tracking-[0.15em]">HOTEL CHANDRESHWAR</div>

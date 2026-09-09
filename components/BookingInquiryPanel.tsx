@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { CalendarCheck } from "lucide-react";
+import { CalendarCheck, CalendarDays, Users, BedDouble } from "lucide-react";
 
 type Props = {
   /** Compact = hero card (no name/phone/message, just the quick check). */
@@ -44,31 +44,31 @@ export default function BookingInquiryPanel({ compact = false, defaultRoomType =
         "grid grid-cols-2 md:grid-cols-5 gap-px bg-charcoal/10 border border-charcoal/10 shadow-xl"
       }
     >
-      <Field label="Check-in">
+      <Field label="Check-in" icon={CalendarDays}>
         <input
           type="date"
           min={today}
           value={checkIn}
           onChange={(e) => setCheckIn(e.target.value)}
-          className="w-full bg-ivory px-4 py-3.5 text-sm text-charcoal outline-none"
+          className="w-full bg-ivory pl-8 pr-3 py-3 text-sm text-charcoal outline-none"
           aria-label="Check-in date"
         />
       </Field>
-      <Field label="Check-out">
+      <Field label="Check-out" icon={CalendarDays}>
         <input
           type="date"
           min={checkIn || today}
           value={checkOut}
           onChange={(e) => setCheckOut(e.target.value)}
-          className="w-full bg-ivory px-4 py-3.5 text-sm text-charcoal outline-none"
+          className="w-full bg-ivory pl-8 pr-3 py-3 text-sm text-charcoal outline-none"
           aria-label="Check-out date"
         />
       </Field>
-      <Field label="Guests">
+      <Field label="Guests" icon={Users}>
         <select
           value={guests}
           onChange={(e) => setGuests(e.target.value)}
-          className="w-full bg-ivory px-4 py-3.5 text-sm text-charcoal outline-none"
+          className="w-full bg-ivory pl-8 pr-3 py-3 text-sm text-charcoal outline-none"
           aria-label="Number of guests"
         >
           {[1, 2, 3, 4, 5, 6].map((n) => (
@@ -78,11 +78,11 @@ export default function BookingInquiryPanel({ compact = false, defaultRoomType =
           ))}
         </select>
       </Field>
-      <Field label="Room Preference">
+      <Field label="Room Preference" icon={BedDouble}>
         <select
           value={roomType}
           onChange={(e) => setRoomType(e.target.value)}
-          className="w-full bg-ivory px-4 py-3.5 text-sm text-charcoal outline-none"
+          className="w-full bg-ivory pl-8 pr-3 py-3 text-sm text-charcoal outline-none"
           aria-label="Room preference"
         >
           <option value="any">No Preference</option>
@@ -101,10 +101,19 @@ export default function BookingInquiryPanel({ compact = false, defaultRoomType =
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({
+  label,
+  icon: Icon,
+  children,
+}: {
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+  children: React.ReactNode;
+}) {
   return (
-    <label className="bg-ivory flex flex-col">
-      <span className="px-4 pt-2.5 text-[10px] tracking-[0.14em] text-charcoal/50">{label.toUpperCase()}</span>
+    <label className="relative bg-ivory flex flex-col">
+      <span className="px-4 pt-2 text-[10px] tracking-[0.14em] text-charcoal/50">{label.toUpperCase()}</span>
+      <Icon className="absolute left-3 bottom-3 size-3.5 text-terracotta pointer-events-none" aria-hidden />
       {children}
     </label>
   );
