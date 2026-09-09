@@ -66,10 +66,13 @@ export function RevealStaggerItem({
   children,
   className,
   y = 20,
+  hover = false,
 }: {
   children: ReactNode;
   className?: string;
   y?: number;
+  /** Adds a subtle lift + shadow on hover, for card-like items. */
+  hover?: boolean;
 }) {
   const shouldReduceMotion = useReducedMotion();
   const variants: Variants = {
@@ -77,7 +80,12 @@ export function RevealStaggerItem({
     visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
   };
   return (
-    <motion.div className={className} variants={variants}>
+    <motion.div
+      className={className}
+      variants={variants}
+      whileHover={hover ? { y: -6 } : undefined}
+      transition={hover ? { type: "spring", stiffness: 300, damping: 20 } : undefined}
+    >
       {children}
     </motion.div>
   );

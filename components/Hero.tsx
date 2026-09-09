@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import PropertyImage from "./PropertyImage";
 import { BookStayButton } from "./CtaButtons";
@@ -8,11 +9,21 @@ import Link from "next/link";
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Scroll parallax: the background image drifts down more slowly than the
+  // page scrolls past it, giving the hero depth as you scroll away from it.
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 160]);
 
   return (
-    <section className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-charcoal">
+    <section ref={sectionRef} className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-charcoal">
       <motion.div
         className="absolute inset-0"
+        style={{ y: parallaxY }}
         initial={{ scale: shouldReduceMotion ? 1 : 1.12 }}
         animate={{ scale: 1 }}
         transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}

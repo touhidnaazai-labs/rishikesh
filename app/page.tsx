@@ -7,11 +7,14 @@ import PropertyImage from "@/components/PropertyImage";
 import Reveal, { RevealStagger, RevealStaggerItem } from "@/components/Reveal";
 import RoomCard from "@/components/RoomCard";
 import FaqAccordion from "@/components/FaqAccordion";
+import CountUp from "@/components/CountUp";
+import ImageMarquee from "@/components/ImageMarquee";
 import { BookStayButton, WhatsAppButton, CallButton } from "@/components/CtaButtons";
 import { hotel } from "@/data/hotel";
 import { rooms } from "@/data/rooms";
 import { faqs } from "@/data/faq";
 import { guideArticles } from "@/data/guide";
+import { galleryImages } from "@/data/gallery";
 import { FaqStructuredData } from "@/components/StructuredData";
 
 export const metadata: Metadata = {
@@ -22,10 +25,9 @@ export const metadata: Metadata = {
 };
 
 const trustStats = [
-  { value: "10", label: "Rooms" },
-  { value: "7", label: "AC Rooms" },
-  { value: "3", label: "Non-AC Rooms" },
-  { value: "Direct", label: "Booking" },
+  { value: 10, label: "Rooms" },
+  { value: 7, label: "AC Rooms" },
+  { value: 3, label: "Non-AC Rooms" },
 ];
 
 const whyStay = [
@@ -54,10 +56,17 @@ export default function HomePage() {
             {trustStats.map((stat) => (
               <div key={stat.label}>
                 <dt className="sr-only">{stat.label}</dt>
-                <dd className="font-display text-4xl md:text-5xl text-terracotta">{stat.value}</dd>
+                <dd className="font-display text-4xl md:text-5xl text-terracotta">
+                  <CountUp value={stat.value} />
+                </dd>
                 <dd className="mt-2 text-xs tracking-[0.2em] text-charcoal/60">{stat.label.toUpperCase()}</dd>
               </div>
             ))}
+            <div>
+              <dt className="sr-only">Booking</dt>
+              <dd className="font-display text-4xl md:text-5xl text-terracotta">Direct</dd>
+              <dd className="mt-2 text-xs tracking-[0.2em] text-charcoal/60">BOOKING</dd>
+            </div>
           </dl>
         </Reveal>
       </section>
@@ -101,6 +110,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Living photo strip */}
+      <section className="pb-24 md:pb-32">
+        <ImageMarquee
+          images={galleryImages.slice(0, 8).map((img) => ({ src: img.src, alt: img.alt }))}
+        />
+      </section>
+
       {/* Rooms */}
       <section className="bg-[#efe9dd] py-24 md:py-32">
         <div className="container-editorial">
@@ -130,7 +146,11 @@ export default function HomePage() {
         </Reveal>
         <RevealStagger className="grid sm:grid-cols-2 lg:grid-cols-5 gap-px bg-charcoal/10 border border-charcoal/10">
           {whyStay.map((item) => (
-            <RevealStaggerItem key={item.title} className="bg-ivory p-8 flex flex-col gap-4">
+            <RevealStaggerItem
+              key={item.title}
+              hover
+              className="relative bg-ivory p-8 flex flex-col gap-4 hover:shadow-lg hover:z-10 transition-shadow duration-300"
+            >
               <item.icon className="size-6 text-terracotta" aria-hidden />
               <p className="text-sm text-charcoal leading-snug">{item.title}</p>
             </RevealStaggerItem>

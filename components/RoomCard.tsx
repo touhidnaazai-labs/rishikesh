@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Snowflake, BedDouble, Bath, Droplets } from "lucide-react";
-import PropertyImage from "./PropertyImage";
+import RoomCardImage from "./RoomCardImage";
 import { Room } from "@/data/rooms";
 import { formatPrice } from "@/lib/format";
 
@@ -16,22 +16,11 @@ export default function RoomCard({ room, reverse = false }: { room: Room; revers
     <article
       className={`grid md:grid-cols-2 gap-8 md:gap-14 items-center ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}
     >
-      <Link
+      <RoomCardImage
         href={`/rooms/${room.slug}`}
-        className="group relative block aspect-[4/3] overflow-hidden bg-charcoal"
-      >
-        <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105">
-          <PropertyImage
-            src={room.images[0].src}
-            alt={room.images[0].alt}
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-          />
-        </div>
-        <span className="absolute top-4 left-4 bg-ivory/95 text-charcoal text-[11px] tracking-[0.14em] px-3 py-1.5">
-          {room.count} ROOMS AVAILABLE
-        </span>
-      </Link>
+        images={room.images}
+        countLabel={`${room.count} ROOMS AVAILABLE`}
+      />
 
       <div>
         <p className="text-xs tracking-[0.25em] text-terracotta mb-3">

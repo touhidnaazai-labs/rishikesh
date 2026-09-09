@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 import { Phone, MessageCircle } from "lucide-react";
 import { hotel } from "@/data/hotel";
 import { buildWhatsAppLink, buildTelLink } from "@/lib/booking";
@@ -21,6 +24,12 @@ const sizes: Record<Size, string> = {
   lg: "px-8 py-4 text-base",
 };
 
+// Shared hover/tap micro-interaction for every CTA — a small lift + scale
+// on hover, a quick compress on tap/click, so buttons feel responsive
+// rather than static.
+const tap = { scale: 0.96 };
+const hover = { scale: 1.03, y: -1 };
+
 /** Primary conversion CTA: "Book Your Stay" -> booking inquiry page. */
 export function BookStayButton({
   variant = "primary",
@@ -34,9 +43,11 @@ export function BookStayButton({
   label?: string;
 }) {
   return (
-    <Link href="/book" className={clsx(base, variants[variant], sizes[size], className)}>
-      {label}
-    </Link>
+    <motion.div whileHover={hover} whileTap={tap} className="inline-block">
+      <Link href="/book" className={clsx(base, variants[variant], sizes[size], className)}>
+        {label}
+      </Link>
+    </motion.div>
   );
 }
 
@@ -55,15 +66,17 @@ export function WhatsAppButton({
   message?: Parameters<typeof buildWhatsAppLink>[0];
 }) {
   return (
-    <a
-      href={buildWhatsAppLink(message || {})}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={clsx(base, variants[variant], sizes[size], className)}
-    >
-      <MessageCircle className="size-4" aria-hidden />
-      {label}
-    </a>
+    <motion.div whileHover={hover} whileTap={tap} className="inline-block">
+      <a
+        href={buildWhatsAppLink(message || {})}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={clsx(base, variants[variant], sizes[size], className)}
+      >
+        <MessageCircle className="size-4" aria-hidden />
+        {label}
+      </a>
+    </motion.div>
   );
 }
 
@@ -80,10 +93,12 @@ export function CallButton({
   label?: string;
 }) {
   return (
-    <a href={buildTelLink()} className={clsx(base, variants[variant], sizes[size], className)}>
-      <Phone className="size-4" aria-hidden />
-      {label}
-    </a>
+    <motion.div whileHover={hover} whileTap={tap} className="inline-block">
+      <a href={buildTelLink()} className={clsx(base, variants[variant], sizes[size], className)}>
+        <Phone className="size-4" aria-hidden />
+        {label}
+      </a>
+    </motion.div>
   );
 }
 

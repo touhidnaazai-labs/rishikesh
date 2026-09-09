@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileActionBar from "@/components/MobileActionBar";
+import MotionProvider from "@/components/MotionProvider";
+import ScrollProgress from "@/components/ScrollProgress";
 import { HotelStructuredData } from "@/components/StructuredData";
 import { hotel } from "@/data/hotel";
 import { siteUrl, siteName } from "@/data/site";
@@ -64,11 +66,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${cormorant.variable} ${body.variable}`}>
       <body className="antialiased">
-        <HotelStructuredData />
-        <Header />
-        <main className="pb-16 md:pb-0">{children}</main>
-        <Footer />
-        <MobileActionBar />
+        <MotionProvider>
+          <HotelStructuredData />
+          <ScrollProgress />
+          <Header />
+          <main className="pb-16 md:pb-0">{children}</main>
+          <Footer />
+          <MobileActionBar />
+        </MotionProvider>
       </body>
     </html>
   );

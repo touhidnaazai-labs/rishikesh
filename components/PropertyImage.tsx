@@ -34,6 +34,11 @@ export default function PropertyImage({
   const isSvg = src.endsWith(".svg");
   const fitClass = objectFit === "contain" ? "object-contain" : "object-cover";
 
+  // Next's default re-encode quality (75) visibly softens already-modest
+  // source photography. These are small, well-optimized JPEGs to begin
+  // with, so a higher quality budget is worth the small size increase.
+  const quality = 90;
+
   if (fill) {
     return (
       <Image
@@ -43,6 +48,7 @@ export default function PropertyImage({
         sizes={sizes || "100vw"}
         priority={priority}
         unoptimized={isSvg}
+        quality={quality}
         className={clsx(fitClass, className)}
       />
     );
@@ -57,6 +63,7 @@ export default function PropertyImage({
       sizes={sizes}
       priority={priority}
       unoptimized={isSvg}
+      quality={quality}
       className={clsx(fitClass, className)}
     />
   );

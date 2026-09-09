@@ -61,18 +61,28 @@ export default function Header() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
-          {mainNav.slice(1).map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={clsx(
-                "text-sm tracking-wide transition-colors hover:opacity-70",
-                solid ? "text-charcoal" : "text-ivory"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {mainNav.slice(1).map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={clsx(
+                  "group relative py-1 text-sm tracking-wide transition-colors",
+                  solid ? "text-charcoal" : "text-ivory"
+                )}
+              >
+                {link.label}
+                <span
+                  className={clsx(
+                    "absolute left-0 -bottom-0.5 h-px bg-terracotta transition-all duration-300 ease-out",
+                    active ? "w-full" : "w-0 group-hover:w-full"
+                  )}
+                  aria-hidden
+                />
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">

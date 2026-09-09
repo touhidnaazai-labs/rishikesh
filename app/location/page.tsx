@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { MapPin, Navigation, Phone } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import Reveal from "@/components/Reveal";
+import Reveal, { RevealStagger, RevealStaggerItem } from "@/components/Reveal";
 import PropertyImage from "@/components/PropertyImage";
 import CopyAddressButton from "@/components/CopyAddressButton";
 import { BookStayButton, WhatsAppButton } from "@/components/CtaButtons";
 import { hotel } from "@/data/hotel";
+import { nearbyAttractions } from "@/data/attractions";
 
 export const metadata: Metadata = {
   title: "Location — Hotel in Chandreshwar Nagar, Rishikesh",
@@ -122,6 +124,44 @@ export default function LocationPage() {
             </div>
           </div>
         </Reveal>
+
+        {/* Nearby attractions */}
+        <div className="mb-20 md:mb-28">
+          <Reveal className="max-w-2xl mb-10">
+            <p className="text-xs tracking-[0.25em] text-terracotta mb-4">NEARBY ATTRACTIONS</p>
+            <h2 className="font-display text-3xl md:text-4xl text-charcoal text-balance">
+              Places Worth Visiting Near Chandreshwar Nagar
+            </h2>
+            <p className="mt-4 text-charcoal/70 leading-relaxed">
+              Rishikesh&rsquo;s best-known ghats, bridges and ashrams are within
+              reach of the hotel. Exact distances aren&rsquo;t published here yet
+              (see the note above) — use &ldquo;Get Directions&rdquo; for an accurate
+              route to each.
+            </p>
+          </Reveal>
+
+          <RevealStagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-charcoal/10 border border-charcoal/10">
+            {nearbyAttractions.map((place) => (
+              <RevealStaggerItem
+                key={place.name}
+                hover
+                className="bg-ivory p-6 flex flex-col gap-2 hover:shadow-lg hover:z-10 transition-shadow duration-300"
+              >
+                <h3 className="font-display text-lg text-charcoal">{place.name}</h3>
+                <p className="text-sm text-charcoal/65 leading-relaxed">{place.description}</p>
+              </RevealStaggerItem>
+            ))}
+          </RevealStagger>
+
+          <Reveal delay={0.1} className="mt-6">
+            <Link
+              href="/guide/places-to-visit-in-rishikesh"
+              className="inline-block text-sm text-charcoal border-b border-charcoal/40 pb-1 hover:border-terracotta hover:text-terracotta transition-colors"
+            >
+              Read the full places-to-visit guide
+            </Link>
+          </Reveal>
+        </div>
 
         <Reveal className="text-center bg-[#efe9dd] py-16 px-6">
           <h2 className="font-display text-3xl md:text-4xl text-charcoal">Book a Room Nearby</h2>
