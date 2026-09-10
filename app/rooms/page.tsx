@@ -8,8 +8,7 @@ import { hotel } from "@/data/hotel";
 
 export const metadata: Metadata = {
   title: "Rooms — AC & Non-AC Double Bed Rooms in Rishikesh",
-  description:
-    "Hotel Chandreshwar has 10 double-bed rooms in Rishikesh — 7 AC rooms and 3 Non-AC rooms, all with attached bathrooms and hot water. Book directly.",
+  description: `Hotel Chandreshwar has ${hotel.rooms.total} double-bed rooms in Rishikesh — ${hotel.rooms.ac} AC rooms and ${hotel.rooms.nonAc} Non-AC rooms, all double occupancy with attached bathrooms and hot water. Book directly.`,
   alternates: { canonical: "/rooms" },
 };
 
@@ -23,8 +22,9 @@ export default function RoomsPage() {
           <h1 className="font-display text-5xl md:text-6xl text-charcoal text-balance">Rooms</h1>
           <p className="mt-6 text-charcoal/70 leading-relaxed">
             {hotel.rooms.total} double-bed rooms in total — {hotel.rooms.ac} AC and{" "}
-            {hotel.rooms.nonAc} Non-AC — each with an attached bathroom and hot water.
-            Choose the option that suits you and book directly with the hotel.
+            {hotel.rooms.nonAc} Non-AC — each for double occupancy, with an attached
+            bathroom and hot water. Choose the option that suits you and book
+            directly with the hotel.
           </p>
         </Reveal>
       </div>

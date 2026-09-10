@@ -70,7 +70,8 @@ export default function AboutPage() {
         <Reveal className="border-t border-charcoal/10 pt-14 max-w-2xl">
           <h2 className="font-display text-3xl text-charcoal mb-4">What We Offer</h2>
           <ul className="grid sm:grid-cols-2 gap-3 text-charcoal/75">
-            <li>• 10 double-bed rooms — 7 AC, 3 Non-AC</li>
+            <li>• {hotel.rooms.total} double-bed rooms — {hotel.rooms.ac} AC, {hotel.rooms.nonAc} Non-AC</li>
+            <li>• Double occupancy, every room</li>
             <li>• Attached bathroom in every room</li>
             <li>• Hot water in every room</li>
             <li>• Direct booking by phone or WhatsApp</li>

@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { Snowflake, BedDouble, Bath, Droplets } from "lucide-react";
+import { Snowflake, BedDouble, Bath, Droplets, Users } from "lucide-react";
 import RoomCardImage from "./RoomCardImage";
 import { Room } from "@/data/rooms";
 import { formatPrice } from "@/lib/format";
 
 const featureIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   "Double bed": BedDouble,
+  "Double occupancy": Users,
   "Attached bathroom": Bath,
   "Hot water": Droplets,
   "Air conditioning": Snowflake,

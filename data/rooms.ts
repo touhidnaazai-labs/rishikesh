@@ -29,13 +29,12 @@ export const rooms: Room[] = [
     type: "AC",
     count: hotel.rooms.ac,
     heading: "AC Double Bed Room",
-    summary:
-      "A comfortable, air-conditioned double-bed room with an attached bathroom and hot water — 7 rooms available.",
+    summary: `A comfortable, air-conditioned double-bed room with an attached bathroom and hot water — ${hotel.rooms.ac} rooms available, double occupancy.`,
     description: [
-      "Hotel Chandreshwar's AC Double Bed Rooms are built around the essentials that matter on a Rishikesh trip: a comfortable double bed, a private attached bathroom, round-the-clock hot water, and air conditioning to help you rest well after a day of travel, sightseeing or the ghats.",
-      "There are 7 AC rooms in the property, each kept simple and clean, with straightforward direct booking through the hotel — no middlemen, no hidden steps.",
+      "Hotel Chandreshwar's AC Double Bed Rooms are built around the essentials that matter on a Rishikesh trip: a comfortable double bed for two guests, a private attached bathroom, round-the-clock hot water, and air conditioning to help you rest well after a day of travel, sightseeing or the ghats.",
+      `There are ${hotel.rooms.ac} AC rooms in the property, each kept simple and clean, with straightforward direct booking through the hotel — no middlemen, no hidden steps.`,
     ],
-    features: ["Double bed", "Attached bathroom", "Hot water", "Air conditioning"],
+    features: ["Double bed", "Double occupancy", "Attached bathroom", "Hot water", "Air conditioning"],
     price: hotel.pricing.acRoomPrice,
     images: [
       { src: "/images/rooms/ac-room-1.jpg", alt: "AC Double Bed Room at Hotel Chandreshwar, Rishikesh" },
@@ -50,13 +49,12 @@ export const rooms: Room[] = [
     type: "Non-AC",
     count: hotel.rooms.nonAc,
     heading: "Non-AC Double Bed Room",
-    summary:
-      "A comfortable double-bed room with an attached bathroom and hot water, at a more economical option — 3 rooms available.",
+    summary: `A comfortable double-bed room with an attached bathroom and hot water, at a budget-friendly rate — ${hotel.rooms.nonAc} rooms available, double occupancy.`,
     description: [
-      "For travelers who don't need air conditioning or prefer a more budget-friendly option, Hotel Chandreshwar's Non-AC Double Bed Rooms offer the same core comfort: a double bed, an attached bathroom, and hot water, in the same convenient Chandreshwar Nagar location.",
-      "There are 3 Non-AC rooms in the property. Availability is limited, so early direct booking by phone or WhatsApp is recommended.",
+      "For travelers who don't need air conditioning or prefer a more budget-friendly rate, Hotel Chandreshwar's Non-AC Double Bed Rooms offer the same core comfort: a double bed for two guests, an attached bathroom, and hot water, in the same convenient Chandreshwar Nagar location.",
+      `There are ${hotel.rooms.nonAc} Non-AC rooms in the property — the majority of the hotel's rooms — with straightforward direct booking by phone or WhatsApp.`,
     ],
-    features: ["Double bed", "Attached bathroom", "Hot water"],
+    features: ["Double bed", "Double occupancy", "Attached bathroom", "Hot water"],
     price: hotel.pricing.nonAcRoomPrice,
     images: [
       { src: "/images/rooms/non-ac-room-1.jpg", alt: "Non-AC Double Bed Room at Hotel Chandreshwar, Rishikesh" },

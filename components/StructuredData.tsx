@@ -4,8 +4,9 @@ import { siteUrl } from "@/data/site";
 /**
  * Renders one or more JSON-LD <script> blocks. Only factual, confirmed
  * information is included — no invented reviews, ratings, stars, awards,
- * or opening year. Price range is omitted entirely while pricing is
- * unconfirmed (data/hotel.ts pricing fields are null).
+ * or opening year. priceRange is included only once both room prices are
+ * confirmed (data/hotel.ts pricing fields are non-null); it's omitted
+ * automatically if either is unset again in the future.
  */
 export function HotelStructuredData() {
   const data: Record<string, unknown> = {
@@ -32,6 +33,12 @@ export function HotelStructuredData() {
       value: true,
     })),
   };
+
+  if (hotel.pricing.acRoomPrice != null && hotel.pricing.nonAcRoomPrice != null) {
+    const low = Math.min(hotel.pricing.acRoomPrice, hotel.pricing.nonAcRoomPrice);
+    const high = Math.max(hotel.pricing.acRoomPrice, hotel.pricing.nonAcRoomPrice);
+    data.priceRange = `₹${low}–₹${high}`;
+  }
 
   if (hotel.geo.verified) {
     data.geo = {

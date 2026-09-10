@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Snowflake, BedDouble, Bath, Droplets } from "lucide-react";
+import { Snowflake, BedDouble, Bath, Droplets, Users } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Reveal from "@/components/Reveal";
 import PropertyImage from "@/components/PropertyImage";
@@ -10,6 +10,7 @@ import { formatPrice } from "@/lib/format";
 
 const featureIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   "Double bed": BedDouble,
+  "Double occupancy": Users,
   "Attached bathroom": Bath,
   "Hot water": Droplets,
   "Air conditioning": Snowflake,

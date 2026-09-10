@@ -108,9 +108,10 @@ export default function LocationPage() {
             <p className="mt-4 text-charcoal/70 leading-relaxed">
               Whether you&rsquo;re visiting for the Ganga, a yoga programme, a family
               trip, or simply passing through on a longer Uttarakhand itinerary,
-              Hotel Chandreshwar offers 10 double-bed rooms (7 AC, 3 Non-AC),
-              each with an attached bathroom and hot water, and direct booking by
-              phone or WhatsApp — no third-party platform required.
+              Hotel Chandreshwar offers {hotel.rooms.total} double-bed rooms
+              ({hotel.rooms.ac} AC, {hotel.rooms.nonAc} Non-AC), each for double
+              occupancy with an attached bathroom and hot water, and direct
+              booking by phone or WhatsApp — no third-party platform required.
             </p>
           </div>
           <div className="flex justify-center md:justify-start">

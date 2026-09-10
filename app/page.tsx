@@ -25,9 +25,9 @@ export const metadata: Metadata = {
 };
 
 const trustStats = [
-  { value: 10, label: "Rooms" },
-  { value: 7, label: "AC Rooms" },
-  { value: 3, label: "Non-AC Rooms" },
+  { value: hotel.rooms.total, label: "Rooms" },
+  { value: hotel.rooms.ac, label: "AC Rooms" },
+  { value: hotel.rooms.nonAc, label: "Non-AC Rooms" },
 ];
 
 const whyStay = [
@@ -124,12 +124,14 @@ export default function HomePage() {
             </h2>
             <p className="mt-6 text-charcoal/70 leading-relaxed">
               Hotel Chandreshwar offers a straightforward and welcoming stay for
-              travelers looking for comfortable accommodation in Rishikesh. With 10
-              double-bed rooms, including 7 AC rooms and 3 Non-AC rooms, guests can
-              choose according to their needs.
+              travelers looking for comfortable accommodation in Rishikesh. With{" "}
+              {hotel.rooms.total} double-bed rooms, including {hotel.rooms.ac} AC rooms
+              and {hotel.rooms.nonAc} Non-AC rooms, guests can choose according to their
+              needs.
             </p>
             <p className="mt-4 text-charcoal/70 leading-relaxed">
-              All rooms include attached bathrooms and hot water. The hotel is
+              Every room is double occupancy, with an attached bathroom and hot
+              water included. The hotel is
               located in Chandreshwar Nagar, near Durga Mandir and Dayanand Ashram
               Road — a convenient base for exploring Rishikesh.
             </p>

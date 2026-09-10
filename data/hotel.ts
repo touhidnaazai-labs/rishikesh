@@ -72,22 +72,25 @@ export const hotel = {
 
   rooms: {
     total: 10,
-    ac: 7,
-    nonAc: 3,
+    ac: 3,
+    nonAc: 7,
+    // Every room — AC and Non-AC — is a double-bed room for two guests.
+    occupancy: "Double occupancy (max 2 guests per room)",
+    maxGuests: 2,
   },
 
-  // Prices intentionally left empty. Fill in later — every room card,
-  // detail page, and structured-data price range will pick these up
-  // automatically once set.
+  // Confirmed tariff. Every room card, detail page, and structured-data
+  // price range picks these up automatically.
   pricing: {
     currency: "INR",
-    acRoomPrice: null as number | null,
-    nonAcRoomPrice: null as number | null,
-    priceNote: "Contact the hotel directly for current tariff and availability.",
+    acRoomPrice: 1000 as number | null,
+    nonAcRoomPrice: 600 as number | null,
+    priceNote: "Per night, double occupancy. Contact the hotel to confirm current tariff and availability.",
   },
 
   amenitiesConfirmed: [
     "Double bed",
+    "Double occupancy",
     "Attached bathroom",
     "Hot water",
   ],
