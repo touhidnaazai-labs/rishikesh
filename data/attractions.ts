@@ -45,6 +45,16 @@ export const nearbyAttractions: Attraction[] = [
     description: "A national park a short drive from town, offering wildlife safaris and forest scenery.",
   },
   {
+    name: "Swarg Ashram",
+    description:
+      "A riverside stretch dotted with smaller ashrams, bookshops and cafés — a popular area for an evening walk along the Ganga.",
+  },
+  {
+    name: "Trayambakeshwar Temple (Tera Manzil)",
+    description:
+      "A distinctive 13-storey temple near Laxman Jhula, easy to spot and a common stop while exploring that side of the river.",
+  },
+  {
     name: "Local markets near Ram Jhula & Tapovan",
     description: "Small markets and cafés worth wandering between sightseeing and yoga classes.",
   },
