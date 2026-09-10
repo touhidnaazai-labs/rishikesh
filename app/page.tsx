@@ -106,8 +106,31 @@ export default function HomePage() {
         </Reveal>
       </section>
 
+      {/* Rooms — interactive selector */}
+      <section className="bg-[#efe9dd] py-24 md:py-32">
+        <div className="container-editorial">
+          <Reveal className="mb-12 md:mb-16 flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-xl">
+              <p className="text-xs tracking-[0.25em] text-terracotta mb-4">ROOMS</p>
+              <h2 className="font-display text-4xl md:text-5xl text-charcoal text-balance">
+                Find Your Room
+              </h2>
+            </div>
+            <Link
+              href="/rooms"
+              className="text-sm tracking-wide text-charcoal border-b border-charcoal/40 pb-1 hover:border-terracotta hover:text-terracotta transition-colors"
+            >
+              View All Rooms
+            </Link>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <RoomSelector rooms={rooms} />
+          </Reveal>
+        </div>
+      </section>
+
       {/* Introduction */}
-      <section className="container-editorial pb-24 md:pb-32">
+      <section className="container-editorial py-24 md:py-32">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <ClipReveal direction="left">
             <div className="relative aspect-[4/5] overflow-hidden">
@@ -156,29 +179,6 @@ export default function HomePage() {
 
       {/* Guest journey */}
       <GuestJourney />
-
-      {/* Rooms — interactive selector */}
-      <section className="bg-[#efe9dd] py-24 md:py-32">
-        <div className="container-editorial">
-          <Reveal className="mb-12 md:mb-16 flex flex-wrap items-end justify-between gap-6">
-            <div className="max-w-xl">
-              <p className="text-xs tracking-[0.25em] text-terracotta mb-4">ROOMS</p>
-              <h2 className="font-display text-4xl md:text-5xl text-charcoal text-balance">
-                Find Your Room
-              </h2>
-            </div>
-            <Link
-              href="/rooms"
-              className="text-sm tracking-wide text-charcoal border-b border-charcoal/40 pb-1 hover:border-terracotta hover:text-terracotta transition-colors"
-            >
-              View All Rooms
-            </Link>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <RoomSelector rooms={rooms} />
-          </Reveal>
-        </div>
-      </section>
 
       {/* Why stay here — centered intro + icon columns */}
       <section id="why-stay" className="container-editorial py-24 md:py-32 text-center">
