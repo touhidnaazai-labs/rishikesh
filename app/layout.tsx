@@ -5,6 +5,7 @@ import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileActionBar from "@/components/MobileActionBar";
+import FloatingContact from "@/components/FloatingContact";
 import MotionProvider from "@/components/MotionProvider";
 import ScrollProgress from "@/components/ScrollProgress";
 import { HotelStructuredData } from "@/components/StructuredData";
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="pb-16 md:pb-0">{children}</main>
           <Footer />
           <MobileActionBar />
+          <FloatingContact />
         </MotionProvider>
       </body>
     </html>
