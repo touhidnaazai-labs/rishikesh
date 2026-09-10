@@ -141,15 +141,49 @@ export default function LocationPage() {
             </p>
           </Reveal>
 
-          <RevealStagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-charcoal/10 border border-charcoal/10">
+          <RevealStagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-charcoal/10 border border-charcoal/10">
             {nearbyAttractions.map((place) => (
               <RevealStaggerItem
                 key={place.name}
                 hover
-                className="bg-ivory p-6 flex flex-col gap-2 hover:shadow-lg hover:z-10 transition-shadow duration-300"
+                className="bg-ivory flex flex-col hover:shadow-lg hover:z-10 transition-shadow duration-300"
               >
-                <h3 className="font-display text-lg text-charcoal">{place.name}</h3>
-                <p className="text-sm text-charcoal/65 leading-relaxed">{place.description}</p>
+                {place.image && (
+                  <div className="relative aspect-[4/3] overflow-hidden bg-charcoal/5">
+                    <PropertyImage
+                      src={place.image}
+                      alt={place.name}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    />
+                  </div>
+                )}
+                <div className="p-6 flex flex-col gap-2 flex-1">
+                  <h3 className="font-display text-lg text-charcoal">{place.name}</h3>
+                  <p className="text-sm text-charcoal/65 leading-relaxed">{place.description}</p>
+                  {place.credit && (
+                    <p className="mt-auto pt-3 text-[11px] text-charcoal/40">
+                      Photo:{" "}
+                      <a
+                        href={place.credit.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-terracotta"
+                      >
+                        {place.credit.photographer}
+                      </a>
+                      {" / Wikimedia Commons, "}
+                      <a
+                        href={place.credit.licenseUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-terracotta"
+                      >
+                        {place.credit.license}
+                      </a>
+                    </p>
+                  )}
+                </div>
               </RevealStaggerItem>
             ))}
           </RevealStagger>
