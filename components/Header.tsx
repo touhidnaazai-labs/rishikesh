@@ -3,11 +3,16 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone } from "lucide-react";
+import { motion } from "framer-motion";
+import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import clsx from "clsx";
 import { mainNav } from "@/data/site";
 import { hotel } from "@/data/hotel";
+import { buildTelLink, buildWhatsAppLink } from "@/lib/booking";
 import { BookStayButton } from "./CtaButtons";
+
+const iconHover = { scale: 1.08 };
+const iconTap = { scale: 0.94 };
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -85,17 +90,52 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3">
           <a
             href={`tel:${hotel.contact.primaryPhoneDial}`}
             className={clsx(
-              "flex items-center gap-2 text-sm transition-colors hover:opacity-70",
+              "hidden xl:flex items-center gap-2 text-sm transition-colors hover:opacity-70 mr-1",
               solid ? "text-charcoal" : "text-ivory"
             )}
           >
             <Phone className="size-4" aria-hidden />
             {hotel.contact.primaryPhone}
           </a>
+
+          <motion.a
+            href={buildTelLink()}
+            aria-label="Call Hotel Chandreshwar"
+            title="Call Now"
+            whileHover={iconHover}
+            whileTap={iconTap}
+            className={clsx(
+              "flex size-10 items-center justify-center rounded-full border transition-colors",
+              solid
+                ? "border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-ivory"
+                : "border-ivory/50 text-ivory hover:bg-ivory hover:text-charcoal"
+            )}
+          >
+            <Phone className="size-4" aria-hidden />
+          </motion.a>
+
+          <motion.a
+            href={buildWhatsAppLink({})}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp Hotel Chandreshwar"
+            title="WhatsApp Us"
+            whileHover={iconHover}
+            whileTap={iconTap}
+            className={clsx(
+              "flex size-10 items-center justify-center rounded-full border transition-colors",
+              solid
+                ? "border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-ivory"
+                : "border-ivory/50 text-ivory hover:bg-ivory hover:text-charcoal"
+            )}
+          >
+            <MessageCircle className="size-4" aria-hidden />
+          </motion.a>
+
           <BookStayButton size="md" />
         </div>
 
