@@ -38,6 +38,16 @@ export default function Header() {
 
   const solid = scrolled || !isHome || open;
 
+  // Clicking the logo while already on "/" is a same-route navigation,
+  // which Next.js skips entirely — including its usual scroll-to-top —
+  // so nothing happens. Scroll up manually in that case.
+  function handleLogoClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (isHome) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+
   return (
     <header
       className={clsx(
@@ -46,7 +56,7 @@ export default function Header() {
       )}
     >
       <div className="container-editorial flex items-center justify-between py-4 md:py-5">
-        <Link href="/" className="flex flex-col leading-none group">
+        <Link href="/" onClick={handleLogoClick} className="flex flex-col leading-none group">
           <span
             className={clsx(
               "font-display text-lg md:text-xl tracking-[0.18em] transition-colors",
