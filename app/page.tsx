@@ -4,8 +4,10 @@ import { BedDouble, Droplets, MapPin, PhoneCall, MessageCircle, UserCheck } from
 import Hero from "@/components/Hero";
 import BookingInquiryPanel from "@/components/BookingInquiryPanel";
 import PropertyImage from "@/components/PropertyImage";
+import ClipReveal from "@/components/ClipReveal";
 import Reveal, { RevealStagger, RevealStaggerItem } from "@/components/Reveal";
-import RoomTeaserCard from "@/components/RoomTeaserCard";
+import RoomSelector from "@/components/RoomSelector";
+import GuestJourney from "@/components/GuestJourney";
 import FaqAccordion from "@/components/FaqAccordion";
 import CountUp from "@/components/CountUp";
 import ImageMarquee from "@/components/ImageMarquee";
@@ -107,7 +109,7 @@ export default function HomePage() {
       {/* Introduction */}
       <section className="container-editorial pb-24 md:pb-32">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <Reveal>
+          <ClipReveal direction="left">
             <div className="relative aspect-[4/5] overflow-hidden">
               <PropertyImage
                 src="/images/property/intro-1.jpg"
@@ -116,7 +118,7 @@ export default function HomePage() {
                 sizes="(min-width: 768px) 50vw, 100vw"
               />
             </div>
-          </Reveal>
+          </ClipReveal>
           <Reveal delay={0.15}>
             <p className="text-xs tracking-[0.25em] text-terracotta mb-4">ABOUT THE HOTEL</p>
             <h2 className="font-display text-4xl md:text-5xl text-charcoal text-balance">
@@ -152,7 +154,10 @@ export default function HomePage() {
         />
       </section>
 
-      {/* Rooms — quick pick */}
+      {/* Guest journey */}
+      <GuestJourney />
+
+      {/* Rooms — interactive selector */}
       <section className="bg-[#efe9dd] py-24 md:py-32">
         <div className="container-editorial">
           <Reveal className="mb-12 md:mb-16 flex flex-wrap items-end justify-between gap-6">
@@ -169,13 +174,9 @@ export default function HomePage() {
               View All Rooms
             </Link>
           </Reveal>
-          <RevealStagger className="grid sm:grid-cols-2 gap-6 md:gap-8">
-            {rooms.map((room) => (
-              <RevealStaggerItem key={room.slug}>
-                <RoomTeaserCard room={room} />
-              </RevealStaggerItem>
-            ))}
-          </RevealStagger>
+          <Reveal delay={0.1}>
+            <RoomSelector rooms={rooms} />
+          </Reveal>
         </div>
       </section>
 
@@ -254,7 +255,7 @@ export default function HomePage() {
               Explore the Rishikesh Guide
             </Link>
           </Reveal>
-          <Reveal delay={0.15}>
+          <ClipReveal direction="right" delay={0.1}>
             <div className="relative aspect-[4/5] overflow-hidden">
               <PropertyImage
                 src="/images/property/location-1.svg"
@@ -263,11 +264,11 @@ export default function HomePage() {
                 sizes="(min-width: 768px) 50vw, 100vw"
               />
             </div>
-          </Reveal>
+          </ClipReveal>
         </div>
       </section>
 
-      {/* Guide teaser */}
+      {/* Guide teaser — asymmetric: one featured article + a compact list */}
       <section className="container-editorial py-24 md:py-32">
         <Reveal className="max-w-2xl mb-14">
           <p className="text-xs tracking-[0.25em] text-terracotta mb-4">RISHIKESH GUIDE</p>
@@ -275,18 +276,29 @@ export default function HomePage() {
             Planning Your Trip to Rishikesh
           </h2>
         </Reveal>
-        <div className="grid md:grid-cols-3 gap-8">
-          {guideArticles.slice(0, 3).map((article) => (
-            <Reveal key={article.slug}>
-              <Link href={`/guide/${article.slug}`} className="group block">
-                <p className="text-xs tracking-[0.2em] text-terracotta mb-3">GUIDE</p>
-                <h3 className="font-display text-2xl text-charcoal group-hover:text-terracotta transition-colors">
+        <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 md:gap-16">
+          <Reveal>
+            <Link href={`/guide/${guideArticles[0].slug}`} className="group block h-full border-t border-charcoal/10 pt-8">
+              <p className="text-xs tracking-[0.2em] text-terracotta mb-4">FEATURED GUIDE</p>
+              <h3 className="font-display text-3xl md:text-4xl text-charcoal group-hover:text-terracotta transition-colors text-balance">
+                {guideArticles[0].title}
+              </h3>
+              <p className="mt-4 text-charcoal/65 leading-relaxed max-w-md">{guideArticles[0].description}</p>
+              <span className="mt-5 inline-block text-sm text-charcoal border-b border-charcoal/40 pb-1 group-hover:border-terracotta group-hover:text-terracotta transition-colors">
+                Read the guide
+              </span>
+            </Link>
+          </Reveal>
+          <Reveal delay={0.1} className="flex flex-col divide-y divide-charcoal/10 border-t border-charcoal/10">
+            {guideArticles.slice(1, 4).map((article) => (
+              <Link key={article.slug} href={`/guide/${article.slug}`} className="group py-5 block">
+                <h4 className="font-display text-lg text-charcoal group-hover:text-terracotta transition-colors">
                   {article.title}
-                </h3>
-                <p className="mt-3 text-sm text-charcoal/60 leading-relaxed">{article.description}</p>
+                </h4>
+                <p className="mt-1.5 text-xs text-charcoal/55 leading-relaxed">{article.description}</p>
               </Link>
-            </Reveal>
-          ))}
+            ))}
+          </Reveal>
         </div>
         <Reveal className="mt-12">
           <Link
