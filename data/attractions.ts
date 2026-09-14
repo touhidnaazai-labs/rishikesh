@@ -7,10 +7,12 @@
  * Photos are NOT hotel-supplied — the hotel has no photos of these
  * public landmarks. Each image is sourced from Wikimedia Commons under
  * a Creative Commons license that permits reuse with attribution; the
- * `credit` field is that required attribution and must stay visible
- * wherever the image is shown (see Location page). Do not swap an
- * image without also updating its credit, and do not remove credits
- * to "clean up" the UI — that would violate the license.
+ * `credit` field is that required attribution and must stay reachable
+ * wherever the image is shown. It is rendered by components/PhotoCredit
+ * as an ⓘ badge on the image (one tap to open, labelled for screen
+ * readers) rather than as body text, to keep the cards clean. Do not
+ * swap an image without also updating its credit, and do not drop the
+ * credit entirely to "clean up" the UI — that would violate the license.
  */
 export type Attraction = {
   name: string;
