@@ -1,3 +1,5 @@
+import { hotel } from "./hotel";
+
 // Same shape as data/attractions.ts's Attraction credit — required
 // attribution for a CC BY/CC BY-SA photo, rendered as PhotoCredit's ⓘ
 // badge. Omit entirely for the hotel's own property photos or a CC0 image,
@@ -43,14 +45,9 @@ export const guideArticles: GuideArticle[] = [
       "From Ganga aarti at the ghats to yoga, white-water rafting and the Beatles Ashram — a practical guide to what to actually do in Rishikesh.",
     intro:
       "Rishikesh packs an unusual amount of variety into a small town on the banks of the Ganga — spiritual, adventurous, and simply relaxing, often in the same day. Here's a practical rundown of what most travelers spend their time doing.",
+    // Pexels, photographer Yogesh YK — free license, no attribution required.
     heroImage: "/images/attractions/triveni-ghat.jpg",
-    heroImageAlt: "Evening Ganga Aarti at Triveni Ghat, Rishikesh",
-    heroCredit: {
-      photographer: "ArmouredCyborg",
-      license: "CC BY-SA 4.0",
-      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-      sourceUrl: "https://commons.wikimedia.org/wiki/File:Triveni_Ghat_Rishikesh_02.jpg",
-    },
+    heroImageAlt: "The Krishna-Arjuna chariot statue at Triveni Ghat, Rishikesh",
     sections: [
       {
         heading: "Watch the Ganga Aarti",
@@ -64,14 +61,9 @@ export const guideArticles: GuideArticle[] = [
         paragraphs: [
           "These two suspension bridges over the Ganga are as much a Rishikesh landmark as the river itself. Both connect the town's two banks and are lined with small shops, cafés and temples — a good way to get a feel for the town on foot.",
         ],
+        // Supplied directly by the hotel/owner — no attribution needed.
         image: "/images/attractions/laxman-jhula.jpg",
         imageAlt: "Laxman Jhula suspension bridge over the Ganga, Rishikesh",
-        credit: {
-          photographer: "Deepanshu Mittall",
-          license: "CC BY-SA 4.0",
-          licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-          sourceUrl: "https://commons.wikimedia.org/wiki/File:Laxman_Jhula,_Rishikesh,_Uttarkhand,_India.jpg",
-        },
       },
       {
         heading: "Try yoga and meditation",
@@ -107,20 +99,18 @@ export const guideArticles: GuideArticle[] = [
         paragraphs: [
           "The former ashram where The Beatles famously stayed in 1968 is now open to visitors as a heritage and art space inside the Rajaji National Park buffer zone, with murals, old meditation cells and forest walking paths.",
         ],
+        // Pexels, photographer Tanuj Matta — free license, no attribution required.
         image: "/images/attractions/beatles-ashram.jpg",
-        imageAlt: "Beatles Ashram (Chaurasi Kutia) satsang hall, Rishikesh",
-        credit: {
-          photographer: "Guy P Atkinson",
-          license: "CC BY-SA 4.0",
-          licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-          sourceUrl: "https://commons.wikimedia.org/wiki/File:Beatles_Ashram_Satsang_Hall_Rishikesh.JPG",
-        },
+        imageAlt: "The 'Let It Be' mural at the Beatles Ashram, Rishikesh",
       },
       {
         heading: "Explore local markets and cafés",
         paragraphs: [
           "Between activities, Rishikesh's laid-back café culture and small markets around Ram Jhula and Tapovan are worth wandering — a good way to slow down between more structured sightseeing.",
         ],
+        // Pexels, photographer Aman Gairola — free license, no attribution required.
+        image: "/images/attractions/local-markets.jpg",
+        imageAlt: "Riverside food stalls and vendors near Ram Jhula, Rishikesh",
       },
     ],
     updated: "2026-01-01",
@@ -185,14 +175,9 @@ export const guideArticles: GuideArticle[] = [
     // low-quality crop from the hotel's printed business card, removed
     // sitewide (see public/images/README.md). A general Rishikesh landmark
     // shot instead, same as the other guide articles' hero images.
+    // Supplied directly by the hotel/owner — no attribution needed.
     heroImage: "/images/attractions/trayambakeshwar.jpg",
     heroImageAlt: "Trayambakeshwar Temple (13-storey Tera Manzil) near Laxman Jhula, Rishikesh",
-    heroCredit: {
-      photographer: "VikramSingh Valera",
-      license: "CC BY-SA 4.0",
-      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-      sourceUrl: "https://commons.wikimedia.org/wiki/File:13_Manzil_Temple_Rishikesh_2021.jpg",
-    },
     sections: [
       {
         heading: "How long to stay",
@@ -204,6 +189,11 @@ export const guideArticles: GuideArticle[] = [
         heading: "Getting there",
         paragraphs: [
           "Rishikesh is well connected by road and rail from Delhi and other North Indian cities, with the nearest major airport at Dehradun (Jolly Grant). Overnight trains and buses from Delhi are a common, budget-friendly option.",
+          `Hotel Chandreshwar itself is close to both: Yog Nagari Rishikesh Railway Station is about ${
+            hotel.distances.find((d) => d.name === "Yog Nagari Railway Station")?.distance
+          } away, and the main bus stand is about ${
+            hotel.distances.find((d) => d.name === "Bus Stand")?.distance
+          } away.`,
         ],
       },
       {
@@ -234,10 +224,10 @@ export const guideArticles: GuideArticle[] = [
     heroImage: "/images/attractions/ram-jhula.jpg",
     heroImageAlt: "Ram Jhula footbridge over the Ganga, Rishikesh",
     heroCredit: {
-      photographer: "Paradise Chronicle",
-      license: "CC BY-SA 4.0",
-      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-      sourceUrl: "https://commons.wikimedia.org/wiki/File:Ram_Jhula_footbridge_-_Rishikesh.jpg",
+      photographer: "Ajay Tallam",
+      license: "CC BY-SA 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Ram_Jhula_Bridge,_Rishikesh.jpg",
     },
     sections: [
       {
@@ -245,28 +235,30 @@ export const guideArticles: GuideArticle[] = [
         paragraphs: [
           "The main ghat in Rishikesh and the site of the evening Ganga Aarti — usually the busiest and most atmospheric riverside spot in town.",
         ],
+        // Pexels, photographer Yogesh YK — free license, no attribution required.
         image: "/images/attractions/triveni-ghat.jpg",
-        imageAlt: "Triveni Ghat, Rishikesh",
-        credit: {
-          photographer: "ArmouredCyborg",
-          license: "CC BY-SA 4.0",
-          licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-          sourceUrl: "https://commons.wikimedia.org/wiki/File:Triveni_Ghat_Rishikesh_02.jpg",
-        },
+        imageAlt: "The Krishna-Arjuna chariot statue at Triveni Ghat, Rishikesh",
       },
       {
         heading: "Laxman Jhula and Ram Jhula",
         paragraphs: [
           "Two iconic suspension bridges across the Ganga, each surrounded by temples, shops and cafés on both banks.",
         ],
+        // Supplied directly by the hotel/owner — no attribution needed.
         image: "/images/attractions/laxman-jhula.jpg",
         imageAlt: "Laxman Jhula suspension bridge over the Ganga, Rishikesh",
-        credit: {
-          photographer: "Deepanshu Mittall",
-          license: "CC BY-SA 4.0",
-          licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-          sourceUrl: "https://commons.wikimedia.org/wiki/File:Laxman_Jhula,_Rishikesh,_Uttarkhand,_India.jpg",
-        },
+      },
+      {
+        heading: "Bajrang Setu",
+        paragraphs: [
+          "A newer pedestrian suspension bridge over the Ganga with a glass-floor viewing section, built as an additional crossing near Laxman Jhula.",
+        ],
+        // Supplied directly by the hotel/owner, not sourced from
+        // Wikimedia — no CC credit needed, same as the property's own
+        // photos. (The other photo of this bridge is used on the
+        // Location page's Nearby Attractions card.)
+        image: "/images/attractions/bajrang-setu-glass-floor.jpg",
+        imageAlt: "Glass floor viewing section of Bajrang Setu, Rishikesh",
       },
       {
         heading: "Parmarth Niketan",
@@ -274,13 +266,12 @@ export const guideArticles: GuideArticle[] = [
           "One of Rishikesh's largest ashrams, on the banks of the Ganga near Ram Jhula, known for its own evening aarti and yoga programs.",
         ],
         image: "/images/attractions/parmarth-niketan.jpg",
-        imageAlt: "Front entrance of Parmarth Niketan ashram, Rishikesh",
+        imageAlt: "Parmarth Niketan ashram lit up at night on the Ganga, Rishikesh",
         credit: {
-          photographer: "Billjones94",
-          license: "CC BY-SA 4.0",
-          licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-          sourceUrl:
-            "https://commons.wikimedia.org/wiki/File:Front_entrance_of_the_Parmarth_Niketan,_in_Rishikesh,_Uttarakhand.jpg",
+          photographer: "Sheikh Ershad",
+          license: "CC BY-SA 2.0",
+          licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
+          sourceUrl: "https://commons.wikimedia.org/wiki/File:Rishikesh_at_night_-_Parmarth_Niketan_Ashram.jpg",
         },
       },
       {
@@ -302,28 +293,20 @@ export const guideArticles: GuideArticle[] = [
         paragraphs: [
           "The former Maharishi Mahesh Yogi ashram, now a heritage site with Beatles-themed murals inside the Rajaji National Park buffer area.",
         ],
+        // Pexels, photographer Tanuj Matta — free license, no attribution required.
         image: "/images/attractions/beatles-ashram.jpg",
-        imageAlt: "Beatles Ashram (Chaurasi Kutia) satsang hall, Rishikesh",
-        credit: {
-          photographer: "Guy P Atkinson",
-          license: "CC BY-SA 4.0",
-          licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-          sourceUrl: "https://commons.wikimedia.org/wiki/File:Beatles_Ashram_Satsang_Hall_Rishikesh.JPG",
-        },
+        imageAlt: "The 'Let It Be' mural at the Beatles Ashram, Rishikesh",
       },
       {
         heading: "Rajaji National Park",
         paragraphs: [
           "A short drive from town, this national park offers wildlife safaris and is one of the easier nature escapes near Rishikesh.",
         ],
+        // Pexels, photographer Sabik Nisam — free license, no attribution
+        // required. A representative Asian elephant shot, not a
+        // geo-verified in-park photo.
         image: "/images/attractions/rajaji-national-park.jpg",
-        imageAlt: "Wildlife safari at Rajaji National Park near Rishikesh",
-        credit: {
-          photographer: "Tarun802",
-          license: "CC BY-SA 4.0",
-          licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-          sourceUrl: "https://commons.wikimedia.org/wiki/File:Safari_at_Rajaji_National_Park_(Haridwar).jpg",
-        },
+        imageAlt: "An Asian elephant in forest habitat near Rajaji National Park",
       },
     ],
     updated: "2026-01-01",
@@ -336,14 +319,9 @@ export const guideArticles: GuideArticle[] = [
       "Practical tips for visiting Rishikesh with family — what to plan around, easier activities, and choosing a comfortable place to stay.",
     intro:
       "Rishikesh isn't only a backpacker or yoga-retreat destination — it also works well for family trips, as long as you plan around a few practical things.",
+    // Supplied directly by the hotel/owner — no attribution needed.
     heroImage: "/images/attractions/laxman-jhula.jpg",
     heroImageAlt: "Laxman Jhula suspension bridge over the Ganga, Rishikesh",
-    heroCredit: {
-      photographer: "Deepanshu Mittall",
-      license: "CC BY-SA 4.0",
-      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-      sourceUrl: "https://commons.wikimedia.org/wiki/File:Laxman_Jhula,_Rishikesh,_Uttarkhand,_India.jpg",
-    },
     sections: [
       {
         heading: "Easier, family-friendly activities",

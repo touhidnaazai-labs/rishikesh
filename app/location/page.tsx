@@ -82,11 +82,21 @@ export default function LocationPage() {
               <WhatsAppButton className="text-charcoal" label="WhatsApp Hotel" />
             </div>
 
-            <p className="mt-8 text-sm text-charcoal/50 leading-relaxed">
-              Coordinates and exact walking distances to specific ghats are being
-              confirmed with the owner — use &ldquo;Get Directions&rdquo; above for the most
-              accurate route from wherever you&rsquo;re starting.
-            </p>
+            <div className="mt-8 border-t border-charcoal/10 pt-6">
+              <p className="text-xs tracking-[0.2em] text-charcoal/50 mb-3">DISTANCES FROM THE HOTEL</p>
+              <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-charcoal/75">
+                {hotel.distances.map((d) => (
+                  <li key={d.name} className="flex items-baseline justify-between gap-3">
+                    <span>{d.name}</span>
+                    <span className="text-charcoal/50 whitespace-nowrap">{d.distance}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-xs text-charcoal/45 leading-relaxed">
+                Exact coordinates aren&rsquo;t confirmed yet — use &ldquo;Get Directions&rdquo;
+                above for the most accurate route from wherever you&rsquo;re starting.
+              </p>
+            </div>
           </Reveal>
         </div>
 
@@ -123,29 +133,41 @@ export default function LocationPage() {
             </h2>
             <p className="mt-4 text-charcoal/70 leading-relaxed">
               Rishikesh&rsquo;s best-known ghats, bridges and ashrams are within
-              reach of the hotel. Exact distances aren&rsquo;t published here yet
-              (see the note above) — use &ldquo;Get Directions&rdquo; for an accurate
-              route to each.
+              reach of the hotel — see the confirmed distances above for a few
+              key spots, or use &ldquo;Get Directions&rdquo; for an accurate route to
+              any of the ones below.
             </p>
           </Reveal>
 
           <RevealStagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-charcoal/10 border border-charcoal/10">
             {nearbyAttractions.map((place, i) => {
-              // With a 3-column grid, a list whose length isn't a multiple
-              // of 3 leaves a trailing row that CSS grid still allocates
-              // full-width cells for — those empty cells render as a
-              // conspicuous blank box (this grid's own gap-background
-              // showing through). Stretch a lone trailing item to fill the
-              // row instead of leaving that dead space.
-              const isTrailingSingle =
-                i === nearbyAttractions.length - 1 && nearbyAttractions.length % 3 === 1;
+              // A responsive grid whose item count isn't a clean multiple
+              // of the column count leaves a trailing row with empty grid
+              // cells — those render as a conspicuous blank box (this
+              // grid's own gap-background showing through). Handled per
+              // breakpoint (2 cols at sm, 3 at lg) and per possible
+              // remainder, rather than only the single-item-left case, so
+              // this keeps working correctly as the list grows:
+              //   - 1 short at lg (3-col): last item spans all 3.
+              //   - 2 short at lg: last item spans the remaining 2 (its
+              //     neighbor stays normal width) — no gap left uneven.
+              //   - 1 short at sm (2-col): last item spans both.
+              const total = nearbyAttractions.length;
+              const isLast = i === total - 1;
+              const remSm = total % 2;
+              const remLg = total % 3;
+              const spanSmFull = isLast && remSm === 1;
+              const spanLgFull = isLast && remLg === 1;
+              const spanLgHalf = isLast && remLg === 2;
               return (
                 <RevealStaggerItem
                   key={place.name}
                   hover
                   className={clsx(
                     "bg-ivory flex flex-col hover:shadow-lg hover:z-10 transition-shadow duration-300",
-                    isTrailingSingle && "sm:col-span-2 lg:col-span-3"
+                    spanSmFull && "sm:col-span-2",
+                    spanLgFull && "lg:col-span-3",
+                    spanLgHalf && "lg:col-span-2"
                   )}
                 >
                   {place.image && (
@@ -160,7 +182,14 @@ export default function LocationPage() {
                     </div>
                   )}
                   <div className="p-6 flex flex-col gap-2 flex-1">
-                    <h3 className="font-display text-lg text-charcoal">{place.name}</h3>
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="font-display text-lg text-charcoal">{place.name}</h3>
+                      {place.distance && (
+                        <span className="shrink-0 rounded-full bg-terracotta/10 px-2.5 py-1 text-xs text-terracotta whitespace-nowrap">
+                          {place.distance}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-sm text-charcoal/65 leading-relaxed">{place.description}</p>
                   </div>
                 </RevealStaggerItem>

@@ -6,6 +6,7 @@ import RoomPhotoGrid from "@/components/RoomPhotoGrid";
 import { WhatsAppButton } from "@/components/CtaButtons";
 import { rooms, getRoomBySlug } from "@/data/rooms";
 import { formatPrice } from "@/lib/format";
+import { hotel } from "@/data/hotel";
 
 const featureIcons: Record<string, string> = {
   "Double bed": "/icons/bed-double-sage.svg",
@@ -75,6 +76,16 @@ export default async function RoomDetailPage({
                   aria-hidden
                 />
                 {feature}
+              </li>
+            ))}
+          </ul>
+
+          <h2 className="font-display text-2xl text-charcoal mt-10 mb-5">Distances from the Hotel</h2>
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-2.5 max-w-md text-sm text-charcoal/75">
+            {hotel.distances.map((d) => (
+              <li key={d.name} className="flex items-baseline justify-between gap-3">
+                <span>{d.name}</span>
+                <span className="text-charcoal/50 whitespace-nowrap">{d.distance}</span>
               </li>
             ))}
           </ul>

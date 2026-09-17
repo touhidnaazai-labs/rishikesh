@@ -12,6 +12,7 @@ import { hotel } from "@/data/hotel";
 import { rooms } from "@/data/rooms";
 import { faqs } from "@/data/faq";
 import { galleryImages } from "@/data/gallery";
+import { nearbyAttractions } from "@/data/attractions";
 import { FaqStructuredData } from "@/components/StructuredData";
 
 // Hand-picked subset of galleryImages for the homepage's scrolling photo
@@ -36,6 +37,15 @@ const marqueeImages = marqueeImageSrcs
 
 // Verified amenities only (data/hotel.ts) — nothing invented.
 const amenities = [...hotel.amenitiesConfirmed, ...hotel.servicesConfirmed];
+
+// A hand-picked preview for the homepage — the full list (11 places) lives
+// on /location. Prioritizes the ones with a confirmed distance and a real
+// photo, so a first-time visitor sees exactly how close things are and
+// wants to book, without scrolling through every single entry here.
+const homeAttractionNames = ["Triveni Ghat", "Laxman Jhula", "Beatles Ashram (Chaurasi Kutia)", "Bajrang Setu"];
+const homeAttractions = homeAttractionNames
+  .map((name) => nearbyAttractions.find((a) => a.name === name))
+  .filter((a): a is NonNullable<typeof a> => a !== undefined);
 
 export const metadata: Metadata = {
   title: "Hotel Chandreshwar — Your Comfortable Stay in Rishikesh",
@@ -193,6 +203,69 @@ export default function HomePage() {
             </div>
           </Reveal>
         </div>
+      </section>
+
+      {/* Nearby attractions preview — gives a first-time visitor a reason
+          to book by showing exactly what's close by, rather than making
+          them dig for it on the Location page. Full list of 11 is there. */}
+      <section className="py-20 md:py-28">
+        <div className="container-editorial mb-10 md:mb-12 flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-xl">
+            <p className="eyebrow">NEARBY</p>
+            <h2 className="font-display text-4xl md:text-5xl text-charcoal text-balance">
+              Rishikesh Is Right Outside
+            </h2>
+            <p className="mt-4 text-charcoal/70 leading-relaxed">
+              Ghats, bridges and ashrams are all within easy reach of Hotel
+              Chandreshwar — see the confirmed distances below.
+            </p>
+          </div>
+          <Link
+            href="/location"
+            className="text-sm tracking-wide text-charcoal border-b border-charcoal/40 pb-1 hover:border-terracotta hover:text-terracotta transition-colors"
+          >
+            See All Nearby Places
+          </Link>
+        </div>
+
+        <div className="container-editorial grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+          {homeAttractions.map((place, i) => (
+            <Reveal key={place.name} delay={i * 0.05}>
+              <Link href="/location" className="group block">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-charcoal/5">
+                  {place.image && (
+                    <PropertyImage
+                      src={place.image}
+                      alt={place.name}
+                      fill
+                      sizes="(min-width: 1024px) 22vw, 50vw"
+                      className="transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/10 to-transparent" />
+                  {place.distance && (
+                    <span className="absolute top-3 right-3 rounded-full bg-ivory/90 px-2.5 py-1 text-xs text-charcoal">
+                      {place.distance}
+                    </span>
+                  )}
+                  <p className="absolute inset-x-0 bottom-0 p-4 font-display text-base md:text-lg text-ivory leading-tight">
+                    {place.name}
+                  </p>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={0.2} className="container-editorial mt-10 md:mt-12 text-center">
+          <p className="text-charcoal/70 mb-5">
+            Plan your visit to any of these — book a room at Hotel Chandreshwar first.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+            <BookStayButton size="lg" label="Book Your Stay" />
+            <WhatsAppButton size="lg" />
+          </div>
+        </Reveal>
       </section>
 
       {/* FAQ — only the most-asked few here; the full list lives on /faq */}
