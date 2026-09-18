@@ -21,7 +21,7 @@ stays accurate.
 
 | File | Subject | Source |
 |---|---|---|
-| triveni-ghat.jpg | Triveni Ghat | Pexels, Yogesh YK |
+| triveni-ghat.jpg | Triveni Ghat (aerial, aarti platform visible) | Hotel-supplied |
 | laxman-jhula.jpg | Laxman Jhula | Hotel-supplied |
 | ram-jhula.jpg | Ram Jhula | Wikimedia, Ajay Tallam, CC BY-SA 2.0 |
 | parmarth-niketan.jpg | Parmarth Niketan (night, "PARMARTH" signage visible) | Wikimedia, Sheikh Ershad, CC BY-SA 2.0 |

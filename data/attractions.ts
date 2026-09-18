@@ -31,7 +31,7 @@ export const nearbyAttractions: Attraction[] = [
     name: "Triveni Ghat",
     description:
       "Rishikesh's main ghat on the Ganga, and the site of the evening Ganga Aarti — the most popular spot in town to watch it.",
-    // Pexels, photographer Yogesh YK — free license, no attribution required.
+    // Supplied directly by the hotel/owner — no attribution needed.
     image: "/images/attractions/triveni-ghat.jpg",
     distance: "800 m",
   },

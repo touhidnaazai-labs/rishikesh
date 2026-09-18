@@ -45,9 +45,9 @@ export const guideArticles: GuideArticle[] = [
       "From Ganga aarti at the ghats to yoga, white-water rafting and the Beatles Ashram — a practical guide to what to actually do in Rishikesh.",
     intro:
       "Rishikesh packs an unusual amount of variety into a small town on the banks of the Ganga — spiritual, adventurous, and simply relaxing, often in the same day. Here's a practical rundown of what most travelers spend their time doing.",
-    // Pexels, photographer Yogesh YK — free license, no attribution required.
+    // Supplied directly by the hotel/owner — no attribution needed.
     heroImage: "/images/attractions/triveni-ghat.jpg",
-    heroImageAlt: "The Krishna-Arjuna chariot statue at Triveni Ghat, Rishikesh",
+    heroImageAlt: "Aerial view of Triveni Ghat and the Ganga, Rishikesh",
     sections: [
       {
         heading: "Watch the Ganga Aarti",
@@ -235,9 +235,9 @@ export const guideArticles: GuideArticle[] = [
         paragraphs: [
           "The main ghat in Rishikesh and the site of the evening Ganga Aarti — usually the busiest and most atmospheric riverside spot in town.",
         ],
-        // Pexels, photographer Yogesh YK — free license, no attribution required.
+        // Supplied directly by the hotel/owner — no attribution needed.
         image: "/images/attractions/triveni-ghat.jpg",
-        imageAlt: "The Krishna-Arjuna chariot statue at Triveni Ghat, Rishikesh",
+        imageAlt: "Aerial view of Triveni Ghat and the Ganga, Rishikesh",
       },
       {
         heading: "Laxman Jhula and Ram Jhula",
