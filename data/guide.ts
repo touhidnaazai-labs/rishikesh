@@ -221,14 +221,9 @@ export const guideArticles: GuideArticle[] = [
       "The essential list of ghats, temples, bridges and nearby spots that make up a Rishikesh itinerary.",
     intro:
       "Beyond the well-known highlights, Rishikesh has a handful of specific spots worth building an itinerary around. Here's the essential list — the same places covered in more depth, with directions, on the Location page.",
+    // Supplied directly by the hotel/owner — no attribution needed.
     heroImage: "/images/attractions/ram-jhula.jpg",
-    heroImageAlt: "Ram Jhula footbridge over the Ganga, Rishikesh",
-    heroCredit: {
-      photographer: "Ajay Tallam",
-      license: "CC BY-SA 2.0",
-      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
-      sourceUrl: "https://commons.wikimedia.org/wiki/File:Ram_Jhula_Bridge,_Rishikesh.jpg",
-    },
+    heroImageAlt: "Ram Jhula at night with a light installation across the bridge, Rishikesh",
     sections: [
       {
         heading: "Triveni Ghat",

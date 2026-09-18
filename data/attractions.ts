@@ -46,13 +46,10 @@ export const nearbyAttractions: Attraction[] = [
     name: "Ram Jhula",
     description:
       "The other of Rishikesh's two famous suspension bridges, close to several ashrams including Parmarth Niketan.",
+    // Supplied directly by the hotel/owner — no attribution needed. A
+    // night light-installation shot (a portrait projected across the
+    // bridge's cables), not a plain daytime view.
     image: "/images/attractions/ram-jhula.jpg",
-    credit: {
-      photographer: "Ajay Tallam",
-      license: "CC BY-SA 2.0",
-      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0",
-      sourceUrl: "https://commons.wikimedia.org/wiki/File:Ram_Jhula_Bridge,_Rishikesh.jpg",
-    },
   },
   {
     name: "Parmarth Niketan",

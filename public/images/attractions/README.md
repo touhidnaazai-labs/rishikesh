@@ -23,7 +23,7 @@ stays accurate.
 |---|---|---|
 | triveni-ghat.jpg | Triveni Ghat (aerial, aarti platform visible) | Hotel-supplied |
 | laxman-jhula.jpg | Laxman Jhula | Hotel-supplied |
-| ram-jhula.jpg | Ram Jhula | Wikimedia, Ajay Tallam, CC BY-SA 2.0 |
+| ram-jhula.jpg | Ram Jhula (night light installation) | Hotel-supplied |
 | parmarth-niketan.jpg | Parmarth Niketan (night, "PARMARTH" signage visible) | Wikimedia, Sheikh Ershad, CC BY-SA 2.0 |
 | beatles-ashram.jpg | Beatles Ashram ("Let It Be" mural) | Pexels, Tanuj Matta |
 | neelkanth-mahadev.jpg | Neelkanth Mahadev Temple | Wikimedia, Anurodhraghuwanshi, CC BY-SA 3.0 |
