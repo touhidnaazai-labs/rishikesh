@@ -165,49 +165,12 @@ export default function HomePage() {
       {/* Guest journey */}
       <GuestJourney />
 
-      {/* Immersive location teaser */}
-      <section className="bg-sand py-20 md:py-28">
-        <div className="container-editorial grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <Reveal>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-              <iframe
-                title="Hotel Chandreshwar location map"
-                src={hotel.googleMapsEmbedUrl}
-                className="absolute inset-0 h-full w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="eyebrow">LOCATION</p>
-            <h2 className="font-display text-3xl md:text-4xl text-charcoal text-balance">
-              Chandreshwar Nagar, near Durga Mandir
-            </h2>
-            <p className="mt-5 text-charcoal/70 leading-relaxed max-w-md">{hotel.address.full}</p>
-            <div className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <a
-                href={hotel.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-lg bg-charcoal px-7 py-3 text-sm tracking-wide text-ivory hover:bg-brown transition-colors"
-              >
-                Get Directions
-              </a>
-              <Link
-                href="/location"
-                className="text-sm tracking-wide text-charcoal border-b border-charcoal/40 pb-1 hover:border-terracotta hover:text-terracotta transition-colors"
-              >
-                More on Location
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* Nearby attractions preview — gives a first-time visitor a reason
           to book by showing exactly what's close by, rather than making
-          them dig for it on the Location page. Full list of 11 is there. */}
+          them dig for it on the Location page. Full list of 11 is there.
+          Placed above the map/location teaser below, so the specific
+          nearby places lead into the general "where we are" context
+          rather than the other way around. */}
       <section className="py-20 md:py-28">
         <div className="container-editorial mb-10 md:mb-12 flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-xl">
@@ -266,6 +229,46 @@ export default function HomePage() {
             <WhatsAppButton size="lg" />
           </div>
         </Reveal>
+      </section>
+
+      {/* Immersive location teaser */}
+      <section className="bg-sand py-20 md:py-28">
+        <div className="container-editorial grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <Reveal>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <iframe
+                title="Hotel Chandreshwar location map"
+                src={hotel.googleMapsEmbedUrl}
+                className="absolute inset-0 h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="eyebrow">LOCATION</p>
+            <h2 className="font-display text-3xl md:text-4xl text-charcoal text-balance">
+              Chandreshwar Nagar, near Durga Mandir
+            </h2>
+            <p className="mt-5 text-charcoal/70 leading-relaxed max-w-md">{hotel.address.full}</p>
+            <div className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <a
+                href={hotel.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-lg bg-charcoal px-7 py-3 text-sm tracking-wide text-ivory hover:bg-brown transition-colors"
+              >
+                Get Directions
+              </a>
+              <Link
+                href="/location"
+                className="text-sm tracking-wide text-charcoal border-b border-charcoal/40 pb-1 hover:border-terracotta hover:text-terracotta transition-colors"
+              >
+                More on Location
+              </Link>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       {/* FAQ — only the most-asked few here; the full list lives on /faq */}
