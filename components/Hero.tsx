@@ -45,14 +45,30 @@ export default function Hero() {
         animate={{ scale: 1 }}
         transition={{ duration: 2.4, ease: [0.16, 1, 0.3, 1] }}
       >
-        <PropertyImage
-          src="/images/hero/hero-1.jpg"
-          alt="A double bed room at Hotel Chandreshwar, Rishikesh"
-          fill
-          priority
-          sizes="100vw"
-          className="saturate-[0.82] contrast-[1.06] brightness-[0.86]"
-        />
+        {shouldReduceMotion ? (
+          // prefers-reduced-motion: a still frame instead of the
+          // autoplaying video — same visual, no motion.
+          <PropertyImage
+            src="/videos/hero-rishikesh-poster.jpg"
+            alt="Laxman Jhula bridge and the Ganga at Rishikesh"
+            fill
+            priority
+            sizes="100vw"
+            className="saturate-[0.82] contrast-[1.06] brightness-[0.86]"
+          />
+        ) : (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/videos/hero-rishikesh-poster.jpg"
+            className="absolute inset-0 h-full w-full object-cover saturate-[0.82] contrast-[1.06] brightness-[0.86]"
+            aria-hidden
+          >
+            <source src="/videos/hero-rishikesh.mp4" type="video/mp4" />
+          </video>
+        )}
         <div className="absolute inset-0 bg-charcoal/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/60 via-45% to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/70 via-transparent to-charcoal/30" />
