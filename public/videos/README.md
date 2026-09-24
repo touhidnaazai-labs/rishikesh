@@ -7,15 +7,15 @@ attribution required:
 
 | Segment | Source |
 |---|---|
-| 0–11s: Wide sweeping drone aerial orbiting the temple-lined riverbank as the Ganga bends through town | Pexels, creator Nitin Khajotia — [source](https://www.pexels.com/video/a-river-with-rocks-and-buildings-in-the-background-19096741/) (this is an ~11s excerpt from a longer clip, taken from its clean tail section — the clip's earlier minutes show a different, siltier stretch of river and aren't used here) |
-| 11–21s: Ground-level shot of the suspension bridge, Trayambakeshwar Temple and the Ganga's turquoise water, close and legible | Pexels, creator shalender kumar — [source](https://www.pexels.com/video/river-under-a-suspension-bridge-6595641/) |
-| 21–31s: Close drone shot of turquoise river rapids with a rafting boat, mountains behind | Pexels, creator Ex Route Adventures — [source](https://www.pexels.com/video/a-river-with-rapids-and-mountains-in-the-background-19096561/) |
+| 0–10s: Close drone shot of turquoise river rapids with a rafting boat, mountains behind | Pexels, creator Ex Route Adventures — [source](https://www.pexels.com/video/a-river-with-rapids-and-mountains-in-the-background-19096561/) |
+| 10–20s: Ground-level shot of the suspension bridge, Trayambakeshwar Temple and the Ganga's turquoise water, close and legible | Pexels, creator shalender kumar — [source](https://www.pexels.com/video/river-under-a-suspension-bridge-6595641/) |
+| 20–31s: Wide sweeping drone aerial orbiting the temple-lined riverbank as the Ganga bends through town | Pexels, creator Nitin Khajotia — [source](https://www.pexels.com/video/a-river-with-rocks-and-buildings-in-the-background-19096741/) (this is an ~11s excerpt from a longer clip, taken from its clean tail section — the clip's earlier minutes show a different, siltier stretch of river and aren't used here) |
 
-Re-encoded and concatenated with ffmpeg (h264, crf 26, ~17MB, 1920×1080,
+Re-encoded and concatenated with ffmpeg (h264, crf 26, ~16MB, 1920×1080,
 25fps, audio stripped).
 
-`hero-rishikesh-poster.jpg` is a frame from the first segment (the wide
-aerial), used as
+`hero-rishikesh-poster.jpg` is a frame from the first segment (the
+rapids), used as
 the `<video poster>` and as the static fallback shown instead of the
 video when the visitor has `prefers-reduced-motion` set (see
 `components/Hero.tsx`).
