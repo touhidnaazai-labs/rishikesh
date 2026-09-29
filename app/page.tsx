@@ -181,11 +181,8 @@ export default function HomePage() {
         </div>
 
         <Reveal delay={0.2} className="container-editorial mt-10 md:mt-12 text-center">
-          <p className="text-charcoal/70 mb-5">
-            Plan your visit to any of these — book a room at Hotel Chandreshwar first.
-          </p>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-            <BookStayButton size="lg" label="Book Your Stay" />
+            <BookStayButton size="lg" label="Book Now" />
             <WhatsAppButton size="lg" />
           </div>
         </Reveal>
